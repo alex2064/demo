@@ -34,8 +34,7 @@ class UserController(
 ) {
 
     @GetMapping("/")
-    fun findAll(): MutableIterable<User> =
-        repository.findAll()
+    fun findAll(): MutableIterable<User> = repository.findAll()
 
     @GetMapping("/{login}")
     fun findOne(@PathVariable login: String): User =
