@@ -19,7 +19,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * kotlin("plugin.spring")
  * 		- allopen 플러그인(plugin.allopen 포함)
  * 		- 코틀린의 클래스는 기본적으로 final로써 open 키워드를 명시적으로 사용하지 않으면 상속이 불가능
- * 		- Spring의 AOP는 cglib을 사용하는데 이는 상속을 통해서 Proxy 패턴을 사용
+ * 		- Spring의 AOP는 CGLIB을 사용하는데 이는 상속을 통해서 Proxy 패턴을 사용
  * 		- 해당 플러그인은 아래의 클래스를 open 기본으로 해줌
  * 			- @Component
  * 			- @Component를 상속받는 @Configuration, @Controller, @RestController, @Service, @Repository
