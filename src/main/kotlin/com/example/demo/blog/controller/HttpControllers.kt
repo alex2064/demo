@@ -14,8 +14,9 @@ import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/article")
-class ArticleController(
-    private val repository: ArticleRepository
+class ArticleController (
+    private val repository: ArticleRepository,
+    private val userRepository: UserRepository
 ) {
 
     @GetMapping("/")
