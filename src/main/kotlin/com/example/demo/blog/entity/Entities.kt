@@ -63,8 +63,11 @@ import java.time.LocalDateTime
  *      
  * @ManyToOne
  *      - N:1, 단방향, 여러개가 하나에 연결될 때 사용
- *      - @JoinColumn을 통해 조인되는 컬럼을 나타냄
- *      - 양방향을 나타낼때는 1쪽에 @OneToMany(mappedBy = "...") 추가, 1쪽은 읽기만 가능
+ *      - fetch : FetchType.EAGER -> 조인 쿼리 즉시 로딩
+ *                  FetchType.LAZY -> 조인 쿼리 지연 로딩(사용할때 로딩)
+ *      - @JoinColumn을 통해 조인되는 컬럼을 나타냄(필드명_조인 테이블 컬럼명)
+ *      - 양방향을 나타낼때는 1쪽에 @OneToMany(mappedBy = "...") 추가,
+ *      - 연관관계의 주인(외래키가 있는 곳)만 외래키를 관리(등록, 수정, 삭제) 할 수 있고 주인이 아닌쪽은 읽기만 가능
  *
  * @OneToMany
  *      - 1:N, 단방향, 하나가 여러개에 연결될 때 사용
@@ -75,6 +78,12 @@ import java.time.LocalDateTime
  *
  * @ManyToMany
  *      - N:M
+ *
+ * JPA 기본 페치 전략
+ *      - 연관된 엔티티가 하나면 즉시 로딩 (FetchType.EAGER)
+ *          - @ManyToOne, @OneToOne
+ *      - 연관된 엔티티가 컬렉션이면 지연 로딩 (FetchType.LAZY)
+ *          - @OneToMany, @ManyToMany
  */
 
 @Entity
