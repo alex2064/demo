@@ -84,6 +84,7 @@ import java.time.LocalDateTime
  *          - @ManyToOne, @OneToOne
  *      - 연관된 엔티티가 컬렉션이면 지연 로딩 (FetchType.LAZY)
  *          - @OneToMany, @ManyToMany
+ *      - @ManyToOne, @OneToOne도 FetchType.LAZY로 설정해서 지연 로딩을 디폴트로 하는 것이 좋음
  */
 
 @Entity
@@ -106,7 +107,8 @@ class Article(
     var title: String,
     var headline: String,
     var content: String,
-    @ManyToOne var author: User,
+    @ManyToOne(fetch = FetchType.LAZY)
+    var author: User?,
     var slug: String = title.toSlug(),
     var addedAt: LocalDateTime = LocalDateTime.now()
 )
